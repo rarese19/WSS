@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using PROIECT.Helpers.Seeders;
 using PROIECT.Models;
+using WSS.Repositories.UserRepository;
 
 namespace PROIECT.Helpers.Extensions
 {
@@ -10,7 +11,7 @@ namespace PROIECT.Helpers.Extensions
         {
             services.AddScoped<UserManager<User>>();
             services.AddScoped<RoleManager<IdentityRole<Guid>>>();
-
+            services.AddTransient<IUserRepository, UserRepository>();
             return services;
         }
 
