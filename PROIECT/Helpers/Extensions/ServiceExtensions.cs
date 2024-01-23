@@ -2,6 +2,7 @@
 using PROIECT.Helpers.Seeders;
 using PROIECT.Models;
 using WSS.Repositories.UserRepository;
+using WSS.Services.UserServices;
 
 namespace PROIECT.Helpers.Extensions
 {
@@ -17,7 +18,7 @@ namespace PROIECT.Helpers.Extensions
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-
+            services.AddTransient<IUserServices, UserServices>();
             return services;
         }
 

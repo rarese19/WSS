@@ -31,6 +31,7 @@ builder.Services.Configure<IdentityOptions>(opt =>
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 builder.Services.AddSeeders();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

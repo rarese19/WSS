@@ -4,6 +4,8 @@ namespace WSS.Models.DTOs.UserDTOs
 {
     public class UserSignUpDTO
     {
+        public string? Nume { get; set; }
+        public string? Prenume { get; set; }
         [Required(ErrorMessage = "Username is required")]
         public string UserName { get; set; }
         [EmailAddress]
