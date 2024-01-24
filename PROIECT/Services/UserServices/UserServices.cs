@@ -72,6 +72,11 @@ namespace WSS.Services.UserServices
             throw new Exception("Wrong Password");
         }
 
+        public async Task<List<User>> GetAllUsers()
+        {
+            return await _userRepository.GetUsersAsync();
+        }
+
         public async Task Logout()
         {
             await _signInManager.SignOutAsync();

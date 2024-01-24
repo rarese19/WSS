@@ -18,6 +18,10 @@ namespace PROIECT.Repositories.GenericRepository
         TEntity FindById(Guid id);
         Task<TEntity> FindByIdAsync(Guid id);
 
+        void Delete(TEntity entity);
+        bool DeleteById(Guid id);
+        void DeleteRange(IEnumerable<TEntity> entitites);
+
         bool Save();
         Task<bool> SaveAsync();
     }

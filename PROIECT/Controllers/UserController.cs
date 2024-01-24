@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PROIECT.Models;
 using WSS.Models.DTOs.UserDTOs;
@@ -7,6 +8,8 @@ using WSS.Services.UserServices;
 
 namespace WSS.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;
@@ -43,6 +46,58 @@ namespace WSS.Controllers
                 return BadRequest(new Error()
                 {
                     Cod = 200,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("allUsers")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                return Ok(await _userServices.GetAllUsers());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("delete/id")]
+        public async Task<IActionResult> DeleteUser(Guid Id)
+        {
+            try
+            {
+                await _userServices.Delete(Id);
+                return Ok(new Error()
+                {
+                    Cod = 200,
+                    Message = "User was deleted"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPatch("update")]
+        public async Task<IActionResult> UpdateUser([FromBody] UserUpdateDTO user)
+        {
+            try
+            {
+                return Ok(await _userServices.Update(user));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
                     Message = ex.Message
                 });
             }

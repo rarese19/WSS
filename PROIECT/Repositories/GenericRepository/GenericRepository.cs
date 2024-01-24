@@ -56,6 +56,13 @@ namespace PROIECT.Repositories.GenericRepository
         {
             _table.Remove(entity);
         }
+        public bool DeleteById(Guid id)
+        {
+            var entity = _table.Find(id);
+            if (entity == null) return false;
+            _table.Remove(entity);
+            return true;
+        }
         public void DeleteRange(IEnumerable<TEntity> entities)
         {
             _table.RemoveRange(entities);

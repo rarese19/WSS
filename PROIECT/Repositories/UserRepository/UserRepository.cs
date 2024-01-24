@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PROIECT.Models;
 
 namespace WSS.Repositories.UserRepository
@@ -39,6 +40,11 @@ namespace WSS.Repositories.UserRepository
         {
             user.SecurityStamp = Guid.NewGuid().ToString();
             await _userManager.UpdateAsync(user);
+        }
+
+        public async Task<List<User>> GetUsersAsync()
+        {
+            return await _userManager.Users.ToListAsync();
         }
     }
 }

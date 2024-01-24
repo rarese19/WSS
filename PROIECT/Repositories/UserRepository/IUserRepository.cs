@@ -8,5 +8,6 @@ namespace WSS.Repositories.UserRepository
         Task CreateAsync(User user);
         Task Update(User user);
         Task Delete(Guid userId);
+        Task<List<User>> GetUsersAsync();
     }
 }

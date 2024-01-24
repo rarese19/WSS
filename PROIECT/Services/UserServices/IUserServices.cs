@@ -1,4 +1,5 @@
-﻿using WSS.Models.DTOs.UserDTOs;
+﻿using PROIECT.Models;
+using WSS.Models.DTOs.UserDTOs;
 using WSS.Models.Responses;
 
 namespace WSS.Services.UserServices
@@ -11,5 +12,6 @@ namespace WSS.Services.UserServices
         Task Logout();
         Task Delete(Guid userId);
         Task<UserDTO> Update(UserUpdateDTO user);
+        Task<List<User>> GetAllUsers();
     }
 }

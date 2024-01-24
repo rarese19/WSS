@@ -22,10 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Repositories\AngajatRepository\" />
-    <Folder Include="Repositories\MagazinRepository\" />
-    <Folder Include="Repositories\StatiuneRepository\" />
     <Folder Include="Repositories\ProdusRepository\" />
-    <Folder Include="Repositories\PartieRepository\" />
   </ItemGroup>
 
 </Project>
