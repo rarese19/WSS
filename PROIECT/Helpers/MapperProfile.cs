@@ -4,6 +4,7 @@ using PROIECT.Models;
 using System.Collections.Generic;
 using WSS.Models.DTOs.AngajatDTOs;
 using WSS.Models.DTOs.MagazinDTOs;
+using WSS.Models.DTOs.MagazinProdusDTOs;
 using WSS.Models.DTOs.PartieDTOs;
 using WSS.Models.DTOs.ProdusDTOs;
 using WSS.Models.DTOs.StatiuneDTOs;
@@ -68,6 +69,12 @@ namespace WSS.Helpers
             CreateMap<ProdusUpdateDTO, Produs>();
             CreateMap<ProdusDTO, Produs>()
                 .ForMember(p => p.Id, opt =>
+                    opt.MapFrom(src => new Guid()));
+
+            CreateMap<MagazinProdus, MagazinProdusDTO>();
+            CreateMap<MagazinProdus, MagazinProdusUpdateDTO>();
+            CreateMap<MagazinProdusDTO, MagazinProdus>()
+                .ForMember(m => m.Id, opt =>
                     opt.MapFrom(src => new Guid()));
 
             
