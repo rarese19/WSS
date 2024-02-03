@@ -6,5 +6,7 @@ namespace WSS.Services.MagazinProdusServices
     {
         Task Create(MagazinProdusDTO test);
         void Delete(Guid id);
+
+        List<List<string>> GetProdusePerMagazinBrand();
     }
 }

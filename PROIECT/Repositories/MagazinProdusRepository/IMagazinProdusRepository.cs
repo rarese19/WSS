@@ -5,5 +5,6 @@ namespace WSS.Repositories.MagazinProdusRepository
 {
     public interface IMagazinProdusRepository: IGenericRepository<MagazinProdus>
     {
+        public List<List<string>> GetProdusePerMagazinBrand();
     }
 }

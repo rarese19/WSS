@@ -28,5 +28,10 @@ namespace WSS.Services.MagazinProdusServices
             _magazinProdusRepository.DeleteById(id);
             _magazinProdusRepository.Save();
         }
+
+        public List<List<string>> GetProdusePerMagazinBrand()
+        {
+            return _magazinProdusRepository.GetProdusePerMagazinBrand();
+        }
     }
 }

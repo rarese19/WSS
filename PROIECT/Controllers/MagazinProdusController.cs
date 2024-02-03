@@ -29,5 +29,11 @@ namespace WSS.Controllers
             _magazinProdusService.Delete(id);
             return Ok();
         }
+
+        [HttpGet("produse-per-magazin")]
+        public IActionResult GetProdusPerMagazinBrand()
+        {
+            return Ok(_magazinProdusService.GetProdusePerMagazinBrand());
+        }
     }
 }
