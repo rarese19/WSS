@@ -1,27 +1,114 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WSS.Models.DTOs.MagazinDTOs;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WSS.Models.DTOs.AngajatDTOs;
 using WSS.Models.Responses;
-using WSS.Services.MagazinServices;
+using WSS.Services.AngajatServices;
 
 namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MagazinController : Controller
+    public class AngajatController : ControllerBase
     {
-        private readonly IMagazinServices _magazinServices;
+        private readonly IAngajatServices _angajatServices;
 
-        public MagazinController(IMagazinServices magazinServices)
+        public AngajatController(IAngajatServices angajatServices)
         {
-            _magazinServices = magazinServices;
+            _angajatServices = angajatServices;
         }
 
-        [HttpPost("addMagazin")]
-        public async Task<IActionResult> Create([FromBody] MagazinDTO magazin)
+        [HttpPost("addAngajat")]
+        public async Task<IActionResult> Create([FromBody] AngajatCreateDTO angajatDTO)
         {
             try
             {
-                await _magazinServices.MagazinCreate(magazin);
+                await _angajatServices.AngajatCreate(angajatDTO);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("getAllAngajat")]
+        public async Task<IActionResult> GetAllAngajat()
+        {
+            try
+            {
+                return Ok(await _angajatServices.GetAllAngajati());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("angajati/${magazinId}")]
+        public IActionResult GetAngajatByMagazin(Guid magazinId)
+        {
+            try
+            {
+                return Ok(_angajatServices.GetAngajatiByMagazin(magazinId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("angajatAllInfo")]
+        public async Task<IActionResult> GetAngajatAllInfo()
+        {
+            try
+            {
+                return Ok(await _angajatServices.GetAllAngajatInfo());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpDelete("deleteAngajat")]
+        public IActionResult DeleteAngajat(Guid id)
+        {
+            try
+            {
+                return Ok(_angajatServices.Delete(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 500,
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPatch("updateAngajat")]
+        public IActionResult Update(AngajatUpdateDTO angajat)
+        {
+            try
+            {
+                _angajatServices.Update(angajat);
                 return Ok();
             }
             catch (Exception ex)
@@ -34,90 +121,6 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpGet("allMagazin")]
-        public IActionResult GetAllMagazin()
-        {
-            try
-            {
-                return Ok(_magazinServices.GetAllMagazin());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new Error()
-                {
-                    Cod = 500,
-                    Message = ex.Message
-                });
-            }
-        }
 
-        [HttpGet("allMagazinInfo")]
-        public IActionResult GetAllMagazinInfo()
-        {
-            try
-            {
-                return Ok(_magazinServices.GetAllMagazinInfo());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new Error()
-                {
-                    Cod = 500,
-                    Message = ex.Message
-                });
-            }
-        }
-
-        [HttpDelete("deleteMagazin")]
-        public IActionResult DeleteMagazin(Guid id)
-        {
-            try
-            {
-                return Ok(_magazinServices.Delete(id));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new Error()
-                {
-                    Cod = 500,
-                    Message = ex.Message
-                });
-            }
-        }
-
-        [HttpPatch("updateMagazin")]
-        public IActionResult UpdateMagazin(MagazinUpdateDTO magazin)
-        {
-            try
-            {
-                _magazinServices.Update(magazin);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new Error()
-                {
-                    Cod = 500,
-                    Message = ex.Message
-                });
-            }
-        }
-
-        [HttpGet("magazin/regiune")]
-        public IActionResult MagazinRegiune(string regiune)
-        {
-            try
-            {
-                return Ok(_magazinServices.MagazineDinRegiuni(regiune));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new Error()
-                {
-                    Cod = 500,
-                    Message = ex.Message
-                });
-            }
-        }
     }
 }

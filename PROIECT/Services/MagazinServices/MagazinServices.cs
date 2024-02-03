@@ -25,10 +25,21 @@ namespace WSS.Services.MagazinServices
             return true;
         }
 
-        public async Task<List<MagazinDTO>> GetAllMagazin()
+        public List<MagazinDTO> GetAllMagazin()
         {
-            var magazine = await _magazinRepository.GetAllAsync();
+            var magazine =  _magazinRepository.GetAll();
             return _mapper.Map<List<MagazinDTO>>(magazine);
+        }
+
+        public List<Magazin> GetAllMagazinInfo()
+        {
+            return _magazinRepository.GetAll();
+        }
+
+        public List<MagazinAngajatiDTO> GetAllMagazinCuAngajati()
+        {
+            var magazine = _magazinRepository.MagazinCuAngajati();
+            return _mapper.Map<List<MagazinAngajatiDTO>>(magazine);
         }
 
         public MagazinDTO GetMagazinById(Guid Id)

@@ -11,7 +11,9 @@ namespace WSS.Services.MagazinServices
         Task MagazinCreate(MagazinDTO magazin);
         bool Delete(Guid magazinId);
         void Update(MagazinUpdateDTO magazin);
-        Task<List<MagazinDTO>> GetAllMagazin();
+        List<MagazinDTO> GetAllMagazin();
+        List<Magazin> GetAllMagazinInfo();
+        List<MagazinAngajatiDTO> GetAllMagazinCuAngajati();
         List<MagazinDTO> MagazineDinRegiuni(string regiune);
     }
 }

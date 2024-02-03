@@ -1,9 +1,6 @@
-﻿using PROIECT.Models.Base;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PROIECT.Models
+﻿namespace WSS.Models.DTOs.AngajatDTOs
 {
-    public class Angajat: BaseEntity
+    public class AngajatUpdateDTO
     {
         public Guid Id { get; set; }
         public string Nume { get; set; } = null!;
@@ -11,9 +8,7 @@ namespace PROIECT.Models
         public string CNP { get; set; } = null!;
         public int Salariu { get; set; }
         public string? NumarTelefon { get; set; }
-        [ForeignKey("Magazin")]
         public Guid MagazinID { get; set; }
 
-        public Magazin Magazin { get; set; } = null!;
     }
 }

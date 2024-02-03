@@ -15,5 +15,14 @@ namespace WSS.Repositories.MagazinRepository
                     .Where(ob => ob.Statiune.Regiune == regiune) .ToList();
 
         }
+
+        public List<Magazin> MagazinCuAngajati()
+        {
+            IQueryable<Magazin> query = _table;
+
+            query = query.Include(m => m.Angajati);
+
+            return query.ToList();
+        }
     }
 }

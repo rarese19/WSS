@@ -1,28 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WSS.Models.DTOs.PartieDTOs;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WSS.Models.DTOs.ProdusDTOs;
 using WSS.Models.Responses;
-using WSS.Repositories.PartieRepository;
-using WSS.Services.PartieServices;
+using WSS.Services.ProdusServices;
 
 namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PartieController : Controller
+    public class ProdusController : ControllerBase
     {
-        private readonly IPartieServices _partieServices;
+        private readonly IProdusServices _produsServices;
 
-        public PartieController(IPartieServices partieServices)
+        public ProdusController(IProdusServices produsServices)
         {
-            _partieServices = partieServices;
+            _produsServices = produsServices;
         }
 
-        [HttpPost("addPartie")]
-        public async Task<IActionResult> Create([FromBody] PartieDTO partieDTO)
+        [HttpPost("addProdus")]
+        public async Task<IActionResult> Create([FromBody] ProdusDTO produs)
         {
             try
             {
-                await _partieServices.PartieCreate(partieDTO);
+                await _produsServices.ProdusCreate(produs);
                 return Ok();
             }
             catch (Exception ex)
@@ -35,12 +35,12 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpGet("allPartie")]
-        public async Task<IActionResult> GetAllPartie()
+        [HttpGet("getAllProdus")]
+        public async Task<IActionResult> GetAllProdus()
         {
             try
             {
-                return Ok(await _partieServices.GetAllPartie());
+                return Ok(await _produsServices.GetAllProduse());
             }
             catch (Exception ex)
             {
@@ -52,12 +52,12 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpGet("partii/${statiuneId}")]
-        public IActionResult GetPartieByStatiune(Guid statiuneId)
+        [HttpGet("getAllProdusInfo")]
+        public async Task<IActionResult> GetAllProdusInfo()
         {
             try
-            {   
-                return Ok(_partieServices.GetPartiiByStatiune(statiuneId));
+            {
+                return Ok(await _produsServices.GetAllProduseInfo());
             }
             catch (Exception ex)
             {
@@ -69,12 +69,12 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpDelete("deletePartie")]
-        public IActionResult DeletePartie(Guid id)
+        [HttpDelete("deleteProdus")]
+        public IActionResult DeleteProdus(Guid id)
         {
             try
             {
-                return Ok(_partieServices.Delete(id));
+                return Ok(_produsServices.Delete(id));
             }
             catch (Exception ex)
             {
@@ -86,12 +86,12 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpPatch("updatePartie")]
-        public IActionResult Update(PartieUpdateDTO partie)
+        [HttpPatch("updateProdus")]
+        public IActionResult Update(ProdusUpdateDTO produs)
         {
             try
             {
-                _partieServices.Update(partie);
+                _produsServices.Update(produs);
                 return Ok();
             }
             catch (Exception ex)
@@ -103,7 +103,5 @@ namespace WSS.Controllers
                 });
             }
         }
-
-
     }
 }
