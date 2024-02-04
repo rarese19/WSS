@@ -14,15 +14,14 @@ const partii = ref([]);
 const arePartiiLoaded = ref(false);
 
 const handleClickStatiune = async () => {
-  // Dacă se face click pe aceeași stațiune, ascundem sau afișăm pârtiile
   if (arePartiiLoaded.value && props.idStatiuneSelectata === props.statiune.id) {
     arePartiiLoaded.value = false;
-    emit('update-selected', null); // Resetăm ID-ul stațiunii selectate
+    emit('update-selected', null);
   } else {
     partii.value = await partiiStatiuni(props.statiune.id);
     if (partii.value.length != 0)
       arePartiiLoaded.value = true;
-    emit('update-selected', props.statiune.id); // Actualizăm ID-ul stațiunii selectate
+    emit('update-selected', props.statiune.id);
   }
 };
 </script>
@@ -39,3 +38,21 @@ const handleClickStatiune = async () => {
     />
   </div>
 </template>
+
+<style scoped>
+button {
+  transition: background-color .3s ease;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+</style>

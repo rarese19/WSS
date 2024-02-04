@@ -5,7 +5,7 @@ import Statiuni from '../components/Statiuni.vue';
 import { ref } from "vue";
 
 const statiuni = ref([]);
-const idStatiuneSelectata = ref(null); // Stochează ID-ul stațiunii selectate global
+const idStatiuneSelectata = ref(null);
 
 const handleAllStatiuni = async () => {
   statiuni.value = await allStatiuni();
@@ -13,9 +13,8 @@ const handleAllStatiuni = async () => {
 
 await handleAllStatiuni();
 
-// Metoda pentru a actualiza ID-ul stațiunii selectate
+
 const updateSelectedStatiuneId = (newId) => {
-  // Dacă ID-ul este același cu cel deja selectat, îl resetăm (ascundem pârtiile)
   if (idStatiuneSelectata.value === newId) {
     idStatiuneSelectata.value = null;
   } else {
@@ -36,3 +35,19 @@ const updateSelectedStatiuneId = (newId) => {
     />
   </div>
 </template>
+
+<style scoped>
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 25%;
+  padding: 5px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 20px;
+}
+</style>

@@ -59,4 +59,17 @@ border: none;
 border-radius: 5px;
 outline: none;
 }
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 25%;
+  padding: 5px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 20px;
+}
 </style>

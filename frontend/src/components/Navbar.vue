@@ -51,7 +51,7 @@ export default defineComponent({
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -80,5 +80,22 @@ export default defineComponent({
 .content {
   text-align: center;
   margin-top: 20px;
+}
+.navbar {
+  background-color: #2c3e50; /* Schimbă culoarea de fundal */
+  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Adaugă o umbră pentru a crea adâncime */
+}
+
+.logo {
+  color: #ecf0f1; /* Schimbă culoarea textului pentru logo */
+}
+
+.login-button, .logout-button {
+  background-color: #3498db; /* Culoare mai vibrantă pentru butoane */
+  transition: background-color .3s ease; /* Adaugă o tranziție pentru butoane */
+}
+
+.login-button:hover, .logout-button:hover {
+  background-color: #2980b9; /* Schimbă culoarea la hover */
 }
 </style>

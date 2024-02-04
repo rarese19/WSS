@@ -4,15 +4,15 @@
     <form @submit.prevent="register">
       <div>
         <label for="Nume">Nume:</label>
-        <input id="nume" v-model="nume" required>
+        <input type="text" id="nume" v-model="nume" required>
       </div>
       <div>
         <label for="Prenume">Prenume:</label>
-        <input id="prenume" v-model="prenume" required>
+        <input type="text" id="prenume" v-model="prenume" required>
       </div>
       <div>
         <label for="UserName">UserName:</label>
-        <input id="userName" v-model="userName" required>
+        <input type="text" id="userName" v-model="userName" required>
       </div>
       <div>
         <label for="email">Email:</label>
@@ -64,5 +64,18 @@ button {
   border: none;
   border-radius: 5px;
   outline: none;
+}
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 25%;
+  padding: 5px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 20px;
 }
 </style>

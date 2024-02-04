@@ -27,8 +27,17 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+ul {
+  list-style-type: none; /* Elimină bullet-urile listei */
+  padding: 0;
+}
+
 li {
-  margin-bottom: 1rem;
+  background-color: #2c3e50; /* Adaugă o culoare de fundal pentru fiecare element al listei */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px; /* Rotunjește colțurile */
+  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Adaugă o umbră ușoară */
 }
 
 h3 {
