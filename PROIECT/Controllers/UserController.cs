@@ -10,6 +10,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;

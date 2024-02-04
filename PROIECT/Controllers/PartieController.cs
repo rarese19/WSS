@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.PartieDTOs;
 using WSS.Models.Responses;
 using WSS.Repositories.PartieRepository;
@@ -8,6 +9,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class PartieController : Controller
     {
         private readonly IPartieServices _partieServices;
@@ -52,7 +54,7 @@ namespace WSS.Controllers
             }
         }
 
-        [HttpGet("partii/${statiuneId}")]
+        [HttpGet("partii/{statiuneId}")]
         public IActionResult GetPartieByStatiune(Guid statiuneId)
         {
             try

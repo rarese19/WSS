@@ -1,7 +1,8 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue",
-    "src/views/LoginView.vue", "src/Helpers/**/*.ts", "src/views/**/*.vue", "src/views/RegisterView.vue"],
+    "src/views/LoginView.vue", "src/Helpers/**/*.ts", "src/views/**/*.vue", "src/views/RegisterView.vue",
+    "src/components/**/*", "src/components/*"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
