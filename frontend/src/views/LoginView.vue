@@ -18,16 +18,24 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import {login as authServiceLogin} from "@/Helpers/Axios";
+import { useRouter } from 'vue-router';
+
 
 export default defineComponent({
   name: 'LoginPage',
   setup() {
     const email = ref('');
     const password = ref('');
+    const router = useRouter();
+    var token;
 
     const login = async () => {
       await authServiceLogin(email.value, password.value);
       console.log(email.value, password.value);
+      token = localStorage.getItem('authToken');
+      if (token) {
+        await router.push({name: "home"});
+      }
     };
 
     return { email, password, login };

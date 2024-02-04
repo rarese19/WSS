@@ -102,5 +102,22 @@ namespace WSS.Controllers
                 });
             }
         }
+
+        [HttpGet("username")]
+        public async Task<IActionResult> GetUsername(Guid id)
+        {
+            try
+            {
+                return Ok(await _userServices.GetUsername(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Error()
+                {
+                    Cod = 400,
+                    Message = ex.Message
+                });
+            }
+        }
     }
 }

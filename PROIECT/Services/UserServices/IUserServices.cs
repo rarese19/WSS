@@ -13,5 +13,6 @@ namespace WSS.Services.UserServices
         Task Delete(Guid userId);
         Task<UserDTO> Update(UserUpdateDTO user);
         Task<List<User>> GetAllUsers();
+        Task<string> GetUsername(Guid id);
     }
 }

@@ -105,5 +105,12 @@ namespace WSS.Services.UserServices
             }
             throw new Exception(result.Errors.First().Description);
         }
+
+        public async Task<string> GetUsername(Guid id)
+        {
+            var user = await _userRepository.GetUserById(id);
+            var username = await _userRepository.GetUsername(user);
+            return username;
+        }
     }
 }

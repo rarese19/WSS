@@ -46,5 +46,10 @@ namespace WSS.Repositories.UserRepository
         {
             return await _userManager.Users.ToListAsync();
         }
+
+        public async Task<string> GetUsername(User user)
+        {
+            return await _userManager.GetUserNameAsync(user);
+        }
     }
 }
