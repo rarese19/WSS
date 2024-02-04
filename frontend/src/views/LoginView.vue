@@ -11,6 +11,7 @@
         <input type="password" id="password" v-model="password" required>
       </div>
       <button type="submit">Login</button>
+      <button type="button" @click="redirect">Register</button>
     </form>
   </div>
 </template>
@@ -38,7 +39,24 @@ export default defineComponent({
       }
     };
 
-    return { email, password, login };
+    const redirect = async() => {
+      router.push("/register");
+    }
+
+    return { email, password, login, redirect };
   },
 });
 </script>
+
+<style scoped>
+button {
+padding: 8px 16px;
+font-size: 16px;
+cursor: pointer;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 5px;
+outline: none;
+}
+</style>

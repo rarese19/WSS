@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.AngajatDTOs;
 using WSS.Models.Responses;
@@ -86,6 +87,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("deleteAngajat")]
         public IActionResult DeleteAngajat(Guid id)
         {

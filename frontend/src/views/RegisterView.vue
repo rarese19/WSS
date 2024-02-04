@@ -30,6 +30,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import {register as authServiceRegister} from "@/Helpers/Axios";
+import {useRouter} from "vue-router";
+import router from "@/router";
 
 export default defineComponent({
   name: 'RegisterPage',
@@ -42,10 +44,25 @@ export default defineComponent({
 
     const register = async () => {
       await authServiceRegister(nume.value, prenume.value, userName.value, email.value, password.value);
-      console.log(email.value, password.value);
+      if (nume.value) {
+        await router.push({name: "/home"});
+      }
     };
 
     return {nume, prenume, userName, email, password, register };
   },
 });
 </script>
+
+<style scoped>
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+</style>

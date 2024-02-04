@@ -4,7 +4,7 @@
       <div class="logo">WSS</div>
       <div v-if="username">
         Welcome back, {{ username }}!
-        <button @click="logout">Logout</button>
+        <button @click="logout" class="logout-button">Logout</button>
       </div>
       <button v-else @click="goToLogin" class="login-button">Login</button>
     </nav>
@@ -30,7 +30,7 @@ export default defineComponent({
     };
 
     const logout = () => {
-      localStorage.removeItem('userName'); // Șterge numele de utilizator din localStorage
+      localStorage.removeItem('userName');
       localStorage.removeItem('authToken');
       location.reload();
     };
@@ -56,6 +56,17 @@ export default defineComponent({
 }
 
 .login-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.logout-button {
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
