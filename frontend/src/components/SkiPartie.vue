@@ -3,12 +3,9 @@
     <h2>Partii pentru stațiune:</h2>
     <ul>
       <li v-for="(partie, index) in infoPartii" :key="index">
-        {{ partie.nume }} - {{ partie.dificultate }}
+        {{ partie.nume }} - dificultate: {{ partie.gradDificultate }}
       </li>
     </ul>
-  </div>
-  <div v-else>
-    <p>Nu există pârtii de afișat pentru această stațiune.</p>
   </div>
 </template>
 
