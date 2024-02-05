@@ -17,6 +17,7 @@ using WSS.Services.ProdusServices;
 using WSS.Services.StatiuneServices;
 using WSS.Services.UserProdusServices;
 using WSS.Services.UserServices;
+using WSS.Services.MailServices;
 
 namespace PROIECT.Helpers.Extensions
 {
@@ -48,6 +49,7 @@ namespace PROIECT.Helpers.Extensions
             services.AddTransient<IProdusServices, ProdusServices>();
             services.AddTransient<IMagazinProdusService, MagazinProdusService>();
             services.AddTransient<IUserProdusServices, UserProdusServices>();
+            services.AddScoped<IMailServices, MailServices>();
 
             return services;
         }

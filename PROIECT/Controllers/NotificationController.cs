@@ -14,7 +14,7 @@ namespace WSS.Controllers
         [HttpPost]
         public async Task<IActionResult> SendMessageAsync([FromBody] MessageRequest request)
         {
-            var message = new Message()
+            var message = new FirebaseAdmin.Messaging.Message()
             {
                 Notification = new Notification
                 {

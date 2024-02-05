@@ -6,6 +6,7 @@ using PROIECT.Data;
 using PROIECT.Helpers.Extensions;
 using PROIECT.Helpers.Seeders;
 using PROIECT.Models;
+using WSS.Models;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -23,6 +24,12 @@ builder.Services.AddCors(options =>
             .AllowCredentials();
     });
 });
+
+
+var emailConfig = builder.Configuration
+        .GetSection("EmailConfiguration")
+        .Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<Context>(

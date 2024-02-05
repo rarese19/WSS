@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PROIECT.Models;
+using WSS.Models;
 using WSS.Models.DTOs.UserDTOs;
 using WSS.Models.Responses;
+using WSS.Services.MailServices;
 using WSS.Services.UserServices;
 
 namespace WSS.Controllers
@@ -15,11 +17,13 @@ namespace WSS.Controllers
     {
         private readonly IUserServices _userServices;
         private readonly UserManager<User> _userManager;
+        private readonly IMailServices _mailService;
 
-        public UserController(IUserServices userServices, UserManager<User> userManager)
+        public UserController(IUserServices userServices, UserManager<User> userManager, IMailServices mailService)
         {
             _userServices = userServices;
             _userManager = userManager;
+            _mailService = mailService;
         }
 
         [HttpPost("signup")]
@@ -27,7 +31,11 @@ namespace WSS.Controllers
         {
             try
             {
-                return Ok(await _userServices.SignUp(userSignUpDTO));
+                await _userServices.SignUp(userSignUpDTO);
+                var message = new Message(new string[]
+                    {userSignUpDTO.Email}, "Welcome to WSS!", "Welcome To Winter Sports Rentals!");
+                _mailService.SendEmail(message);
+                return Ok();
             }
             catch (Exception ex)
             {
