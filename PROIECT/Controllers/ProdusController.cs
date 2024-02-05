@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.ProdusDTOs;
 using WSS.Models.Responses;
@@ -8,6 +9,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class ProdusController : ControllerBase
     {
         private readonly IProdusServices _produsServices;

@@ -67,3 +67,13 @@ export const allStatiuni = async () => {
         console.error(error);
     }
 }
+
+export const produseUser = async (id: string) => {
+    try {
+        const response = await axios.get(`http://localhost:5093/api/UserProdus/produseByUser?userId=${id}`);
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}

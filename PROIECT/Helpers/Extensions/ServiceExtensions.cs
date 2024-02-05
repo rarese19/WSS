@@ -7,6 +7,7 @@ using WSS.Repositories.MagazinRepository;
 using WSS.Repositories.PartieRepository;
 using WSS.Repositories.ProdusRepository;
 using WSS.Repositories.StatiuneRepository;
+using WSS.Repositories.UserProdusRepository;
 using WSS.Repositories.UserRepository;
 using WSS.Services.AngajatServices;
 using WSS.Services.MagazinProdusServices;
@@ -14,6 +15,7 @@ using WSS.Services.MagazinServices;
 using WSS.Services.PartieServices;
 using WSS.Services.ProdusServices;
 using WSS.Services.StatiuneServices;
+using WSS.Services.UserProdusServices;
 using WSS.Services.UserServices;
 
 namespace PROIECT.Helpers.Extensions
@@ -31,6 +33,8 @@ namespace PROIECT.Helpers.Extensions
             services.AddTransient<IAngajatRepository, AngajatRepository>();
             services.AddTransient<IProdusRepository, ProdusRepository>();
             services.AddTransient<IMagazinProdusRepository, MagazinProdusRepository>();
+            services.AddTransient<IUserProdusRepository, UserProdusRepository>();
+
             return services;
         }
 
@@ -43,6 +47,8 @@ namespace PROIECT.Helpers.Extensions
             services.AddTransient<IAngajatServices, AngajatServices>();
             services.AddTransient<IProdusServices, ProdusServices>();
             services.AddTransient<IMagazinProdusService, MagazinProdusService>();
+            services.AddTransient<IUserProdusServices, UserProdusServices>();
+
             return services;
         }
 

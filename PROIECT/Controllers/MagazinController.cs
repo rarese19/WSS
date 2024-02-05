@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.MagazinDTOs;
 using WSS.Models.Responses;
 using WSS.Services.MagazinServices;
@@ -7,6 +8,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class MagazinController : Controller
     {
         private readonly IMagazinServices _magazinServices;

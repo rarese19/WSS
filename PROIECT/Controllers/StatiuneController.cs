@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.StatiuneDTOs;
 using WSS.Models.Responses;
 using WSS.Repositories.StatiuneRepository;
@@ -8,6 +9,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class StatiuneController: Controller
     {
         private readonly IStatiuneServices _statiuneServices;

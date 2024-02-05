@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.MagazinProdusDTOs;
 using WSS.Services.MagazinProdusServices;
@@ -7,6 +8,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class MagazinProdusController : ControllerBase
     {
         private readonly IMagazinProdusService _magazinProdusService;

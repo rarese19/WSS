@@ -9,6 +9,7 @@ using WSS.Models.DTOs.PartieDTOs;
 using WSS.Models.DTOs.ProdusDTOs;
 using WSS.Models.DTOs.StatiuneDTOs;
 using WSS.Models.DTOs.UserDTOs;
+using WSS.Models.DTOs.UserProdusDTOs;
 
 namespace WSS.Helpers
 {
@@ -74,6 +75,12 @@ namespace WSS.Helpers
             CreateMap<MagazinProdus, MagazinProdusDTO>();
             CreateMap<MagazinProdus, MagazinProdusUpdateDTO>();
             CreateMap<MagazinProdusDTO, MagazinProdus>()
+                .ForMember(m => m.Id, opt =>
+                    opt.MapFrom(src => new Guid()));
+
+            CreateMap<UserProdus, UserProdusDTO>();
+            CreateMap<UserProdus, UserProdusUpdateDTO>();
+            CreateMap<UserProdusDTO, UserProdus>()
                 .ForMember(m => m.Id, opt =>
                     opt.MapFrom(src => new Guid()));
 

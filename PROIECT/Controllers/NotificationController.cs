@@ -1,4 +1,5 @@
 ﻿using FirebaseAdmin.Messaging;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models;
@@ -7,6 +8,7 @@ namespace WSS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class NotificationController : ControllerBase
     {
         [HttpPost]
