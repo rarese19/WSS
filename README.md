@@ -64,3 +64,6 @@ The Winter Sports Store (WSS) is a comprehensive solution designed to enhance th
  -  **Shopping Cart:** Add items to your cart and manage your purchases easily. 
  -  **User Authentication:** Secure login and registration functionality for users. 
  -  **Responsive Design:** A mobile-friendly interface that adapts to various screen sizes for optimal viewing.
+
+# Diagrama
+ ![](diagrama.png)
