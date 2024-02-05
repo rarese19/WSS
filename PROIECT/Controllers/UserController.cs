@@ -73,6 +73,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("delete/id")]
         public async Task<IActionResult> DeleteUser(Guid Id)
         {

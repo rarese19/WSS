@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.StatiuneDTOs;
 using WSS.Models.Responses;
@@ -19,6 +20,7 @@ namespace WSS.Controllers
             _statiuneServices = statiuneRepository;
         }
 
+        [Authorize]
         [HttpPost("addStatiune")]
         public async Task<IActionResult> Create([FromBody] StatiuneDTO statiuneDTO)
         {
@@ -53,6 +55,8 @@ namespace WSS.Controllers
                 });
             }
         }
+
+        [Authorize]
         [HttpGet("allStatiuneInfo")]
         public IActionResult GetAllStatiuneInfo()
         {
@@ -70,6 +74,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("deleteStatiune")]
         public IActionResult DeleteStatiune(Guid Id)
         {
@@ -87,6 +92,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("updateStatiune")]
         public IActionResult Update(StatiuneUpdateDTO statiune)
         {

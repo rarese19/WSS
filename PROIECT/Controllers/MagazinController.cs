@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.MagazinDTOs;
 using WSS.Models.Responses;
@@ -18,6 +19,7 @@ namespace WSS.Controllers
             _magazinServices = magazinServices;
         }
 
+        [Authorize]
         [HttpPost("addMagazin")]
         public async Task<IActionResult> Create([FromBody] MagazinDTO magazin)
         {
@@ -53,6 +55,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("allMagazinInfo")]
         public IActionResult GetAllMagazinInfo()
         {
@@ -70,6 +73,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("deleteMagazin")]
         public IActionResult DeleteMagazin(Guid id)
         {
@@ -87,6 +91,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("updateMagazin")]
         public IActionResult UpdateMagazin(MagazinUpdateDTO magazin)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.PartieDTOs;
 using WSS.Models.Responses;
@@ -19,6 +20,7 @@ namespace WSS.Controllers
             _partieServices = partieServices;
         }
 
+        [Authorize]
         [HttpPost("addPartie")]
         public async Task<IActionResult> Create([FromBody] PartieDTO partieDTO)
         {
@@ -71,6 +73,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("deletePartie")]
         public IActionResult DeletePartie(Guid id)
         {
@@ -88,6 +91,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("updatePartie")]
         public IActionResult Update(PartieUpdateDTO partie)
         {

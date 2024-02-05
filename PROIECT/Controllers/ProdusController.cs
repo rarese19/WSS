@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WSS.Models.DTOs.ProdusDTOs;
@@ -19,6 +20,7 @@ namespace WSS.Controllers
             _produsServices = produsServices;
         }
 
+        [Authorize]
         [HttpPost("addProdus")]
         public async Task<IActionResult> Create([FromBody] ProdusDTO produs)
         {
@@ -54,6 +56,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("getAllProdusInfo")]
         public async Task<IActionResult> GetAllProdusInfo()
         {
@@ -71,6 +74,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("deleteProdus")]
         public IActionResult DeleteProdus(Guid id)
         {
@@ -88,6 +92,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("updateProdus")]
         public IActionResult Update(ProdusUpdateDTO produs)
         {

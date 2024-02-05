@@ -38,6 +38,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("getAllAngajat")]
         public async Task<IActionResult> GetAllAngajat()
         {
@@ -107,6 +108,7 @@ namespace WSS.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("updateAngajat")]
         public IActionResult Update(AngajatUpdateDTO angajat)
         {
