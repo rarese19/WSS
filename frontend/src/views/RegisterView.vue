@@ -1,31 +1,34 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <form @submit.prevent="register">
-      <div>
-        <label for="Nume">Nume:</label>
-        <input type="text" id="nume" v-model="nume" required>
-      </div>
-      <div>
-        <label for="Prenume">Prenume:</label>
-        <input type="text" id="prenume" v-model="prenume" required>
-      </div>
-      <div>
-        <label for="UserName">UserName:</label>
-        <input type="text" id="userName" v-model="userName" required>
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button type="submit">Register</button>
-    </form>
+  <div class="register-container">
+    <div class="register-form">
+      <h1>Register</h1>
+      <form @submit.prevent="register">
+        <div>
+          <label for="nume">Nume:</label>
+          <input type="text" id="nume" v-model="nume" required>
+        </div>
+        <div>
+          <label for="prenume">Prenume:</label>
+          <input type="text" id="prenume" v-model="prenume" required>
+        </div>
+        <div>
+          <label for="userName">UserName:</label>
+          <input type="text" id="userName" v-model="userName" required>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" v-model="password" required>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
   </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -44,9 +47,7 @@ export default defineComponent({
 
     const register = async () => {
       await authServiceRegister(nume.value, prenume.value, userName.value, email.value, password.value);
-      if (nume.value) {
-        await router.push({name: "/home"});
-      }
+      await router.push({name: "home"});
     };
 
     return {nume, prenume, userName, email, password, register };
@@ -55,27 +56,64 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282828;
+}
+
+.register-form {
+  background: #2c3e50;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  font-weight: bold;
+  color: white;
+}
+
+.register-form h1 {
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  margin-bottom: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 button {
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 18px;
   cursor: pointer;
-  background-color: #007bff;
+  background-color: #0056b3;
   color: white;
   border: none;
   border-radius: 5px;
   outline: none;
-}
-input[type="email"], input[type="password"], input[type="text"] {
-  width: 25%;
-  padding: 5px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-form {
-  margin-top: 20px;
+button:hover {
+  background-color: #003d82;
+}
+
+button:active {
+  background-color: #003366;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 </style>

@@ -8,7 +8,7 @@
       </div>
       <button v-else @click="goToLogin" class="login-button">Login</button>
     </nav>
-    <!-- Conținutul paginii de home -->
+
     <section class="content">
       <h1>Bine ai venit la WSS!</h1>
     </section>
@@ -82,20 +82,20 @@ export default defineComponent({
   margin-top: 20px;
 }
 .navbar {
-  background-color: #2c3e50; /* Schimbă culoarea de fundal */
-  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Adaugă o umbră pentru a crea adâncime */
+  background-color: #2c3e50;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
 
 .logo {
-  color: #ecf0f1; /* Schimbă culoarea textului pentru logo */
+  color: #ecf0f1;
 }
 
 .login-button, .logout-button {
-  background-color: #3498db; /* Culoare mai vibrantă pentru butoane */
-  transition: background-color .3s ease; /* Adaugă o tranziție pentru butoane */
+  background-color: #3498db;
+  transition: background-color .3s ease;
 }
 
 .login-button:hover, .logout-button:hover {
-  background-color: #2980b9; /* Schimbă culoarea la hover */
+  background-color: #2980b9;
 }
 </style>
